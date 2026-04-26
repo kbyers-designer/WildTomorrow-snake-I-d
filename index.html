@@ -1242,15 +1242,25 @@ function runAnalyze(file, pair) {
 {"ratsnake_pct": <0-100>, "copperhead_pct": <0-100>, "notes": [{"trait": "Tail Tip", "observation": "..."}, {"trait": "Pattern Shape", "observation": "..."}, {"trait": "Base Color", "observation": "..."}, {"trait": "Body Proportions", "observation": "..."}], "confidence": "low|medium|high"}`
     };
 
-const response = await fetch('/.netlify/functions/analyze', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ 
-    image: imageDataUrl, // The base64 string
-    tab: code           // Tells the server which pair to evaluate
-  })
-});
-
+    try {
+      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{
+            role: 'user',
+            content: [
+              { type: 'image', source: { type: 'base64', media_type: file.type, data: base64 } },
+              { type: 'text', text: prompts[pair] }
+            ]
+          }]
+        })
+      });
 
       const data = await resp.json();
       const raw = data.content.map(b => b.text || '').join('').trim().replace(/```json|```/g, '').trim();
