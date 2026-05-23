@@ -734,42 +734,7 @@ flex-wrap:wrap;
   <p><span class="range-overlap">In Texas, the Texas coral snake replaces the eastern species</span> — the band-order rule still applies, but range verification matters when working near the western edge of coral snake territory.</p>
 </div>
 
-<div class="sec-label">Photo Analysis</div>
-<div style="position:relative;">
-  <div class="upload-zone" id="zone-cm" ondragover="onDrag(event,'zone-cm')" ondragleave="offDrag('zone-cm')" ondrop="onDrop(event,'cm')">
-    <input type="file" accept="image/*" onchange="analyze(event,'cm')">
-    <span class="upload-icon">🔍</span>
-    <div class="upload-title">Drop a photo here or tap to upload</div>
-    <div class="upload-hint">Clear dorsal or lateral view showing band colors works best</div>
-  </div>
-  <div class="analyzing" id="analyzing-cm">
-    <div class="spinner"></div>
-    <div class="analyzing-txt">Analyzing traits...</div>
-  </div>
-</div>
-<div class="analysis-out" id="out-cm">
-  <img class="preview-img" id="prev-cm" src="" alt="Uploaded snake photo">
-  <div class="result-grid">
-    <div class="result-card bg-coral">
-      <div class="result-sp c-coral-r">Coral Snake Likelihood</div>
-      <div class="bar-wrap"><div class="bar" id="bar-cm-a" style="background:#e07070"></div></div>
-      <div class="pct c-coral-r" id="pct-cm-a">—</div>
-      <div class="pct-label" id="lbl-cm-a">Upload a photo to score</div>
-    </div>
-    <div class="result-card bg-milk">
-      <div class="result-sp c-milk">Milk / Scarlet Likelihood</div>
-      <div class="bar-wrap"><div class="bar" id="bar-cm-b" style="background:#c0a080"></div></div>
-      <div class="pct c-milk" id="pct-cm-b">—</div>
-      <div class="pct-label" id="lbl-cm-b">Upload a photo to score</div>
-    </div>
-  </div>
-  <div class="trait-notes-block">
-    <div class="tn-head">Trait Notes from Photo</div>
-    <div id="tn-cm"></div>
-  </div>
-  <p class="disclaimer">Heuristic analysis. Never a substitute for expert verification when a coral snake is suspected. Do not handle.</p>
-</div>
-```
+
 
   </div><!-- /panel 2 -->
 
@@ -979,42 +944,8 @@ flex-wrap:wrap;
   <p><span class="range-overlap">Late summer through fall is when juvenile copperheads are most commonly encountered</span> — and most commonly confused with young rat snakes. Yellow tail tip is your fastest field check in this season.</p>
 </div>
 
-<div class="sec-label">Photo Analysis</div>
-<div style="position:relative;">
-  <div class="upload-zone" id="zone-rj" ondragover="onDrag(event,'zone-rj')" ondragleave="offDrag('zone-rj')" ondrop="onDrop(event,'rj')">
-    <input type="file" accept="image/*" onchange="analyze(event,'rj')">
-    <span class="upload-icon">🔍</span>
-    <div class="upload-title">Drop a photo here or tap to upload</div>
-    <div class="upload-hint">Include the full tail if possible — tail tip color is the fastest diagnostic</div>
-  </div>
-  <div class="analyzing" id="analyzing-rj">
-    <div class="spinner"></div>
-    <div class="analyzing-txt">Analyzing traits...</div>
-  </div>
-</div>
-<div class="analysis-out" id="out-rj">
-  <img class="preview-img" id="prev-rj" src="" alt="Uploaded snake photo">
-  <div class="result-grid">
-    <div class="result-card bg-rat">
-      <div class="result-sp c-rat">Rat Snake Likelihood</div>
-      <div class="bar-wrap"><div class="bar" id="bar-rj-a" style="background:#909090"></div></div>
-      <div class="pct c-rat" id="pct-rj-a">—</div>
-      <div class="pct-label" id="lbl-rj-a">Upload a photo to score</div>
-    </div>
-    <div class="result-card bg-juv">
-      <div class="result-sp c-juv">Juv. Copperhead Likelihood</div>
-      <div class="bar-wrap"><div class="bar" id="bar-rj-b" style="background:var(--juv)"></div></div>
-      <div class="pct c-juv" id="pct-rj-b">—</div>
-      <div class="pct-label" id="lbl-rj-b">Upload a photo to score</div>
-    </div>
-  </div>
-  <div class="trait-notes-block">
-    <div class="tn-head">Trait Notes from Photo</div>
-    <div id="tn-rj"></div>
-  </div>
-  <p class="disclaimer">Heuristic analysis. Juvenile copperheads are fully venomous from birth. When in doubt, do not handle. Contact a licensed wildlife rehabilitator or your state wildlife agency.</p>
-</div>
-```
+
+
 
   </div><!-- /panel 4 -->
 
@@ -1042,121 +973,8 @@ function toggle(btn, panelId) {
   if (card) card.classList.toggle('hidden', !btn.classList.contains('on'));
 }
 
-// ─── DRAG & DROP ───
-function onDrag(e, zoneId) { e.preventDefault(); document.getElementById(zoneId).classList.add('drag'); }
-function offDrag(zoneId) { document.getElementById(zoneId).classList.remove('drag'); }
-function onDrop(e, pair) {
-  e.preventDefault();
-  const file = e.dataTransfer.files[0];
-  if (file && file.type.startsWith('image/')) runAnalyze(file, pair);
-}
+// ─
 
-// ─── ANALYZE ───
-function analyze(e, pair) {
-  const file = e.target.files[0];
-  if (file) runAnalyze(file, pair);
-}
-
-function runAnalyze(file, pair) {
-  const analyzing = document.getElementById('analyzing-' + pair);
-  analyzing.classList.add('show');
-
-  const reader = new FileReader();
-  reader.onload = async function(ev) {
-    const imgData = ev.target.result;
-    document.getElementById('prev-' + pair).src = imgData;
-
-    const base64 = imgData.split(',')[1];
-
-    // Build pair-specific prompt
-    const prompts = {
-      cc: `You are a heuristic snake identification assistant for WildTomorrow's educational field guide. Analyze this image for visual cues that help distinguish a copperhead from a corn snake. Look at: pattern shape (hourglass crossbands vs dorsal blotches), body thickness, apparent scale texture (matte/keeled vs glossy/smooth), head width relative to neck, and any visible color saturation (copper/orange tones vs reddish-orange blotches). Return ONLY a JSON object with no markdown, no backticks, no explanation:
-{"copperhead_pct": <0-100>, "corn_pct": <0-100>, "notes": [{"trait": "Pattern", "observation": "..."}, {"trait": "Body Build", "observation": "..."}, {"trait": "Scale Texture", "observation": "..."}, {"trait": "Head Shape", "observation": "..."}, {"trait": "Color Tone", "observation": "..."}], "confidence": "low|medium|high"}`,
-
-      cm: `You are a heuristic snake identification assistant for WildTomorrow's educational field guide. Analyze this image for visual cues that help distinguish an eastern coral snake from a milk or scarlet snake look-alike. Focus on: band color order (does red touch yellow/white or does red touch black), whether bands encircle the full body including belly or fade underneath, head shape (blunt/rounded vs tapered/pointed snout), body slenderness, and any visible ground color. Return ONLY a JSON object with no markdown, no backticks, no explanation:
-{"coral_pct": <0-100>, "mimic_pct": <0-100>, "notes": [{"trait": "Band Order", "observation": "..."}, {"trait": "Belly Pattern", "observation": "..."}, {"trait": "Head Shape", "observation": "..."}, {"trait": "Body Build", "observation": "..."}], "confidence": "low|medium|high"}`,
-
-      wc: `You are a heuristic snake identification assistant for WildTomorrow's educational field guide. Analyze this image for visual cues that help distinguish a cottonmouth (water moccasin) from a non-venomous water snake. Look at: head shape (dramatically triangular vs less distinct), body girth (heavy and blocky vs slimmer), pattern visibility (faded/obscure in adults vs more defined banding), swimming posture if visible, and overall body mass. Return ONLY a JSON object with no markdown, no backticks, no explanation:
-{"cottonmouth_pct": <0-100>, "watersnake_pct": <0-100>, "notes": [{"trait": "Head Shape", "observation": "..."}, {"trait": "Body Girth", "observation": "..."}, {"trait": "Pattern", "observation": "..."}, {"trait": "Overall Build", "observation": "..."}], "confidence": "low|medium|high"}`,
-
-      rj: `You are a heuristic snake identification assistant for WildTomorrow's educational field guide. Analyze this image for visual cues that help distinguish a juvenile rat snake from a juvenile copperhead. Focus on: tail tip color (bright sulfur-yellow indicates copperhead; no yellow indicates rat snake), pattern shape (hourglass crossbands vs squarish irregular blotches), background base color (warm tan/pinkish-gray vs cooler gray-white), and body proportions. Return ONLY a JSON object with no markdown, no backticks, no explanation:
-{"ratsnake_pct": <0-100>, "copperhead_pct": <0-100>, "notes": [{"trait": "Tail Tip", "observation": "..."}, {"trait": "Pattern Shape", "observation": "..."}, {"trait": "Base Color", "observation": "..."}, {"trait": "Body Proportions", "observation": "..."}], "confidence": "low|medium|high"}`
-    };
-
-    try {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: [
-              { type: 'image', source: { type: 'base64', media_type: file.type, data: base64 } },
-              { type: 'text', text: prompts[pair] }
-            ]
-          }]
-        })
-      });
-
-      const data = await resp.json();
-      const raw = data.content.map(b => b.text || '').join('').trim().replace(/```json|```/g, '').trim();
-      const result = JSON.parse(raw);
-      renderResult(pair, result);
-    } catch(err) {
-      console.error(err);
-      renderError(pair);
-    } finally {
-      analyzing.classList.remove('show');
-      document.getElementById('out-' + pair).classList.add('show');
-    }
-  };
-  reader.readAsDataURL(file);
-}
-
-function renderResult(pair, r) {
-  const configs = {
-    cc:  { aKey:'copperhead_pct', bKey:'corn_pct',        aLabel:'Copperhead', bLabel:'Corn Snake' },
-    cm:  { aKey:'coral_pct',      bKey:'mimic_pct',       aLabel:'Coral Snake', bLabel:'Milk/Scarlet' },
-    wc:  { aKey:'cottonmouth_pct',bKey:'watersnake_pct',  aLabel:'Cottonmouth', bLabel:'Water Snake' },
-    rj:  { aKey:'ratsnake_pct',   bKey:'copperhead_pct',  aLabel:'Rat Snake', bLabel:'Juv. Copperhead' }
-  };
-  const c = configs[pair];
-  const aVal = r[c.aKey] ?? 50;
-  const bVal = r[c.bKey] ?? 50;
-  const confLabel = r.confidence === 'high' ? 'High confidence estimate' : r.confidence === 'medium' ? 'Moderate confidence estimate' : 'Low confidence — image quality or angle limited analysis';
-
-  setTimeout(() => {
-    document.getElementById('bar-' + pair + '-a').style.width = aVal + '%';
-    document.getElementById('bar-' + pair + '-b').style.width = bVal + '%';
-  }, 100);
-
-  document.getElementById('pct-' + pair + '-a').textContent = aVal + '%';
-  document.getElementById('pct-' + pair + '-b').textContent = bVal + '%';
-  document.getElementById('lbl-' + pair + '-a').textContent = confLabel;
-  document.getElementById('lbl-' + pair + '-b').textContent = confLabel;
-
-  const tnEl = document.getElementById('tn-' + pair);
-  tnEl.innerHTML = '';
-  (r.notes || []).forEach(n => {
-    const row = document.createElement('div');
-    row.className = 'tn-row';
-    row.innerHTML = `<span class="tn-trait">${n.trait}</span><span>${n.observation}</span>`;
-    tnEl.appendChild(row);
-  });
-}
-
-function renderError(pair) {
-  document.getElementById('pct-' + pair + '-a').textContent = '—';
-  document.getElementById('pct-' + pair + '-b').textContent = '—';
-  document.getElementById('lbl-' + pair + '-a').textContent = 'Analysis unavailable';
-  document.getElementById('lbl-' + pair + '-b').textContent = 'Check image and try again';
-}
-</script>
 
 </body>
 </html>
