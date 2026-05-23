@@ -35,9 +35,9 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 
 body {
-background: var(–dark);
-color: var(–text);
-font-family: ‘Source Serif 4’, Georgia, serif;
+  background: var(--dark);
+color: var(--text);
+font-family: 'Source Serif 4', Georgia, serif;
 font-weight: 300;
 min-height: 100vh;
 overflow-x: hidden;
@@ -45,10 +45,10 @@ overflow-x: hidden;
 
 /* grain */
 body::after {
-content:’’;
+content:'';
 position:fixed;
 inset:0;
-background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘300’ height=‘300’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.75’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘300’ height=‘300’ filter=‘url(%23n)’ opacity=‘1’/%3E%3C/svg%3E”);
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'%3E%3C/feTurbulence%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 opacity:.035;
 pointer-events:none;
 z-index:999;
@@ -57,7 +57,7 @@ z-index:999;
 /* ─── MASTHEAD ─── */
 .masthead {
 padding: 14px 24px;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -68,20 +68,20 @@ backdrop-filter: blur(8px);
 z-index: 100;
 }
 .logo {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-weight: 700;
 font-size: 1rem;
 letter-spacing: .14em;
 text-transform: uppercase;
-color: var(–teal-light);
+color: var(--teal-light);
 }
-.logo span { color: var(–crimson-light); }
+.logo span { color: var(--crimson-light); }
 .masthead-right {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .6rem;
 letter-spacing: .22em;
 text-transform: uppercase;
-color: var(–dim);
+color: var(--dim);
 }
 
 /* ─── HERO ─── */
@@ -89,47 +89,47 @@ color: var(–dim);
 padding: 52px 24px 40px;
 max-width: 860px;
 margin: 0 auto;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 }
 .kicker {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .65rem;
 letter-spacing: .28em;
 text-transform: uppercase;
-color: var(–crimson-light);
+color: var(--crimson-light);
 margin-bottom: 14px;
 display: flex;
 align-items: center;
 gap: 10px;
 }
-.kicker::after { content:’’; flex:1; height:1px; background:var(–crimson); opacity:.4; }
+.kicker::after { content:''; flex:1; height:1px; background:var(--crimson); opacity:.4; }
 .hero h1 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(2.2rem, 6vw, 4rem);
 font-weight: 700;
 line-height: 1.04;
 margin-bottom: 10px;
 }
-.hero h1 em { color: var(–teal-light); font-style: italic; }
+.hero h1 em { color: var(--teal-light); font-style: italic; }
 .hero-sub {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-weight: 300;
 font-size: .95rem;
 letter-spacing: .08em;
 text-transform: uppercase;
-color: var(–muted);
+color: var(--muted);
 margin-bottom: 20px;
 }
 .hero-lede {
 font-size: 1rem;
 line-height: 1.75;
-color: var(–text);
+color: var(--text);
 max-width: 620px;
 margin-bottom: 18px;
 }
 .safety-bar {
 background: #1e0a0a;
-border-left: 3px solid var(–crimson);
+border-left: 3px solid var(--crimson);
 padding: 12px 16px;
 font-size: .83rem;
 line-height: 1.6;
@@ -138,11 +138,11 @@ max-width: 620px;
 }
 .safety-bar strong {
 display: block;
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .68rem;
 letter-spacing: .15em;
 text-transform: uppercase;
-color: var(–text);
+color: var(--text);
 margin-bottom: 3px;
 }
 
@@ -152,7 +152,7 @@ margin-bottom: 3px;
 .tabs-row {
 display: flex;
 gap: 0;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 margin: 32px 0 0;
 overflow-x: auto;
 scrollbar-width: none;
@@ -160,22 +160,22 @@ scrollbar-width: none;
 .tabs-row::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .68rem;
 letter-spacing: .15em;
 text-transform: uppercase;
 padding: 10px 18px;
 border: none;
 background: transparent;
-color: var(–muted);
+color: var(--muted);
 cursor: pointer;
 border-bottom: 2px solid transparent;
 margin-bottom: -1px;
 white-space: nowrap;
 transition: color .2s, border-color .2s;
 }
-.tab-btn:hover { color: var(–text); }
-.tab-btn.active { color: var(–teal-light); border-bottom-color: var(–teal-light); }
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--teal-light); border-bottom-color: var(--teal-light); }
 
 /* ─── PANELS ─── */
 .panel { display: none; padding-top: 28px; }
@@ -183,34 +183,34 @@ transition: color .2s, border-color .2s;
 
 /* ─── SECTION LABEL ─── */
 .sec-label {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .62rem;
 letter-spacing: .25em;
 text-transform: uppercase;
-color: var(–dim);
+color: var(--dim);
 margin: 32px 0 10px;
 display: flex;
 align-items: center;
 gap: 10px;
 }
-.sec-label::after { content:’’; flex:1; height:1px; background:var(–border-light); }
+.sec-label::after { content:''; flex:1; height:1px; background:var(--border-light); }
 
 /* ─── SNAPSHOT GRID ─── */
 .snap-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
-border: 1px solid var(–border);
+border: 1px solid var(--border);
 margin-bottom: 28px;
 }
 .snap-card {
 padding: 22px 20px;
 }
-.snap-card:first-child { border-right: 1px solid var(–border); }
+.snap-card:first-child { border-right: 1px solid var(--border); }
 .snap-dot-row {
 display: flex;
 align-items: center;
 gap: 7px;
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .6rem;
 letter-spacing: .2em;
 text-transform: uppercase;
@@ -218,31 +218,31 @@ margin-bottom: 10px;
 }
 .dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
 .snap-name {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.15rem;
 font-weight: 700;
 font-style: italic;
 margin-bottom: 8px;
 }
-.snap-text { font-size: .87rem; line-height: 1.65; color: var(–muted); }
+.snap-text { font-size: .87rem; line-height: 1.65; color: var(--muted); }
 
 /* ─── HOW TO USE ─── */
-.howto { border: 1px solid var(–border); background: var(–card); margin-bottom: 28px; }
+.howto { border: 1px solid var(--border); background: var(--card); margin-bottom: 28px; }
 .howto li {
 display: flex;
 gap: 14px;
 padding: 12px 18px;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 font-size: .88rem;
 line-height: 1.6;
-color: var(–muted);
+color: var(--muted);
 list-style: none;
 }
 .howto li:last-child { border-bottom: none; }
 .howto-n {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .7rem;
-color: var(–teal-light);
+color: var(--teal-light);
 font-weight: 600;
 min-width: 18px;
 padding-top: 3px;
@@ -256,25 +256,25 @@ gap: 7px;
 margin-bottom: 18px;
 }
 .tog {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .65rem;
 letter-spacing: .14em;
 text-transform: uppercase;
 padding: 5px 13px;
-border: 1px solid var(–border-light);
+border: 1px solid var(--border-light);
 background: transparent;
-color: var(–dim);
+color: var(--dim);
 cursor: pointer;
 transition: all .18s;
 }
-.tog.on { background: var(–teal-dim); border-color: var(–teal); color: var(–teal-light); }
-.tog:hover:not(.on) { border-color: var(–muted); color: var(–muted); }
+.tog.on { background: var(--teal-dim); border-color: var(--teal); color: var(--teal-light); }
+.tog:hover:not(.on) { border-color: var(--muted); color: var(--muted); }
 
 /* ─── TRAIT CARD ─── */
 .trait-card {
-border: 1px solid var(–border);
+border: 1px solid var(--border);
 margin-bottom: 10px;
-background: var(–card);
+background: var(--card);
 overflow: hidden;
 }
 .trait-card.hidden { display: none; }
@@ -282,34 +282,34 @@ overflow: hidden;
 .trait-top {
 display: grid;
 grid-template-columns: 140px 1fr 1fr;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 }
 .trait-meta {
 padding: 12px 14px;
-border-right: 1px solid var(–border);
+border-right: 1px solid var(--border);
 }
 .trait-name-label {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .8rem;
 font-weight: 600;
 letter-spacing: .06em;
 text-transform: uppercase;
-color: var(–text);
+color: var(--text);
 margin-bottom: 4px;
 }
 .trait-priority {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .58rem;
 letter-spacing: .15em;
 text-transform: uppercase;
 }
-.pri-primary { color: var(–teal-light); }
-.pri-secondary { color: var(–dim); }
-.pri-caution { color: var(–corn); }
+.pri-primary { color: var(--teal-light); }
+.pri-secondary { color: var(--dim); }
+.pri-caution { color: var(--corn); }
 
 .sp-header {
 padding: 8px 14px;
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .62rem;
 letter-spacing: .18em;
 text-transform: uppercase;
@@ -317,23 +317,23 @@ display: flex;
 align-items: center;
 gap: 6px;
 }
-.sp-header.a { border-right: 1px solid var(–border); }
+.sp-header.a { border-right: 1px solid var(--border); }
 
 .trait-body {
 display: grid;
 grid-template-columns: 140px 1fr 1fr;
 }
-.trait-spacer { border-right: 1px solid var(–border); }
+.trait-spacer { border-right: 1px solid var(--border); }
 .trait-col {
 padding: 14px;
 font-size: .86rem;
 line-height: 1.65;
-color: var(–muted);
+color: var(--muted);
 }
-.trait-col.a { border-right: 1px solid var(–border); }
+.trait-col.a { border-right: 1px solid var(--border); }
 .trait-col strong {
 display: block;
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .74rem;
 font-weight: 500;
 letter-spacing: .04em;
@@ -344,16 +344,16 @@ margin-bottom: 5px;
 .coral-callout {
 background: #1a1000;
 border: 1px solid #3a2800;
-border-left: 3px solid var(–coral-yellow);
+border-left: 3px solid var(--coral-yellow);
 padding: 16px 18px;
 margin-bottom: 20px;
 }
 .coral-callout-head {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .68rem;
 letter-spacing: .2em;
 text-transform: uppercase;
-color: var(–coral-yellow);
+color: var(--coral-yellow);
 margin-bottom: 8px;
 }
 .rhyme-row {
@@ -363,42 +363,42 @@ flex-wrap: wrap;
 margin-bottom: 10px;
 }
 .rhyme-pill {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .78rem;
 letter-spacing: .06em;
 padding: 4px 12px;
 border-radius: 2px;
 }
-.rhyme-danger { background: rgba(196,48,48,.25); border:1px solid var(–coral-red); color: #e08080; }
+.rhyme-danger { background: rgba(196,48,48,.25); border:1px solid var(--coral-red); color: #e08080; }
 .rhyme-safe { background: rgba(40,100,60,.25); border:1px solid #508050; color: #90c090; }
-.coral-callout p { font-size:.85rem; line-height:1.65; color:var(–muted); }
+.coral-callout p { font-size:.85rem; line-height:1.65; color:var(--muted); }
 .coral-callout .warning {
-font-family: ‘Oswald’, sans-serif;
+font-family: 'Oswald', sans-serif;
 font-size: .65rem;
 letter-spacing: .12em;
 text-transform: uppercase;
-color: var(–dim);
+color: var(--dim);
 margin-top: 8px;
 }
 
 /* ─── RANGE NOTES ─── */
 .range-notes {
-background: var(–surface);
-border: 1px solid var(–border);
+background: var(--surface);
+border: 1px solid var(--border);
 padding: 16px 18px;
 margin-bottom: 28px;
 }
-.range-notes p { font-size:.86rem; line-height:1.7; color:var(–muted); }
+.range-notes p { font-size:.86rem; line-height:1.7; color:var(--muted); }
 .range-notes p+p { margin-top:8px; }
 .range-overlap {
 display:inline;
-color: var(–teal-light);
+color: var(--teal-light);
 font-style: italic;
 }
 
 /* ─── FOOTER ─── */
 footer {
-border-top:1px solid var(–border);
+border-top:1px solid var(--border);
 padding:18px 24px;
 max-width:860px;
 margin:0 auto;
@@ -407,41 +407,41 @@ gap:18px;
 align-items:flex-start;
 flex-wrap:wrap;
 }
-.footer-logo{font-family:‘Oswald’,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(–teal-light);flex-shrink:0;}
-.footer-logo span{color:var(–crimson-light);}
-.footer-txt{font-size:.75rem;line-height:1.6;color:var(–dim);flex:1;}
+.footer-logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-light);flex-shrink:0;}
+.footer-logo span{color:var(--crimson-light);}
+.footer-txt{font-size:.75rem;line-height:1.6;color:var(--dim);flex:1;}
 
 /* ─── COLOR HELPERS ─── */
-.c-copper { color:var(–copper-light); }
-.c-corn   { color:var(–corn); }
+.c-copper { color:var(--copper-light); }
+.c-corn   { color:var(--corn); }
 .c-coral-r{ color:#e07070; }
-.c-coral-y{ color:var(–coral-yellow); }
+.c-coral-y{ color:var(--coral-yellow); }
 .c-milk   { color:#c0a080; }
 .c-water  { color:#60a8c8; }
 .c-cotton { color:#a0a060; }
 .c-rat    { color:#909090; }
-.c-juv    { color:var(–juv); }
+.c-juv    { color:var(--juv); }
 
-.bg-copper { background:linear-gradient(135deg,#1a0f08,var(–card)); }
-.bg-corn   { background:linear-gradient(135deg,#141008,var(–card)); }
-.bg-coral  { background:linear-gradient(135deg,#18100a,var(–card)); }
-.bg-milk   { background:linear-gradient(135deg,#141210,var(–card)); }
-.bg-water  { background:linear-gradient(135deg,#08111a,var(–card)); }
-.bg-cotton { background:linear-gradient(135deg,#111208,var(–card)); }
-.bg-rat    { background:linear-gradient(135deg,#111111,var(–card)); }
-.bg-juv    { background:linear-gradient(135deg,#1a1008,var(–card)); }
+.bg-copper { background:linear-gradient(135deg,#1a0f08,var(--card)); }
+.bg-corn   { background:linear-gradient(135deg,#141008,var(--card)); }
+.bg-coral  { background:linear-gradient(135deg,#18100a,var(--card)); }
+.bg-milk   { background:linear-gradient(135deg,#141210,var(--card)); }
+.bg-water  { background:linear-gradient(135deg,#08111a,var(--card)); }
+.bg-cotton { background:linear-gradient(135deg,#111208,var(--card)); }
+.bg-rat    { background:linear-gradient(135deg,#111111,var(--card)); }
+.bg-juv    { background:linear-gradient(135deg,#1a1008,var(--card)); }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:600px){
 .snap-grid{grid-template-columns:1fr;}
-.snap-card:first-child{border-right:none;border-bottom:1px solid var(–border);}
+.snap-card:first-child{border-right:none;border-bottom:1px solid var(--border);}
 .trait-top{grid-template-columns:1fr 1fr;}
 .trait-meta{display:none;}
 .trait-body{grid-template-columns:1fr 1fr;}
 .trait-spacer{display:none;}
-.trait-col.a{border-right:1px solid var(–border);}
+.trait-col.a{border-right:1px solid var(--border);}
 .result-grid{grid-template-columns:1fr;}
-.result-card:first-child{border-right:none;border-bottom:1px solid var(–border);}
+.result-card:first-child{border-right:none;border-bottom:1px solid var(--border);}
 }
 </style>
 
@@ -450,14 +450,14 @@ flex-wrap:wrap;
 
 <header class="masthead">
   <div class="logo">Wild<span>Tomorrow</span></div>
-  <div class="masthead-right">Snake ID &bull; Field Guide</div>
+  <div class="masthead-right">Snake ID &bullet; Field Guide</div>
 </header>
 
 <section class="hero">
   <div class="kicker">Field Identification</div>
   <h1>Field Marks First,<br><em>Fear Second</em></h1>
   <p class="hero-sub">Snake ID Field Guide &mdash; Four Common Confusions</p>
-  <p class="hero-lede">Most misidentified snakes die for it. This guide walks through pattern logic, body build, and facial cues for four common confusion pairs across the eastern and southeastern United States.</p>
+  <p class="hero-lede">Most misidentified snakes die for it. This guide walks through pattern logic, body build, and facial cues for four common confusion pairs across the eastern and southeastern U.S.</p>
   <div class="safety-bar">
     <strong>Field Safety</strong>
     This is an educational aid, not a guarantee. If you cannot make a confident ID from a safe distance, do not approach, handle, or attempt to move the animal.
@@ -520,8 +520,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-copper"><strong class="c-copper">Hourglass / Hershey Kiss</strong>Crossbands are wide on the sides and narrow dramatically across the spine. When viewed from above, the silhouette pinches inward at each band. The bands wrap the body.</div>
-    <div class="trait-col bg-corn"><strong class="c-corn">Blotches on Top of the Back</strong>Blotches sit as squarish or rounded saddles on the dorsal surface. They don't wrap the body or pinch inward. More like spots than bands.</div>
+    <div class="trait-col a bg-copper"><strong class="c-copper">Hourglass / Hershey Kiss</strong>Crossbands are wide on the sides and narrow dramatically across the spine. When viewed from above, the hourglass pinch is very obvious.</div>
+    <div class="trait-col bg-corn"><strong class="c-corn">Blotches on Top of the Back</strong>Blotches sit as squarish or rounded saddles on the dorsal surface. They don't wrap the body or pinch inward.</div>
   </div>
 </div>
 
@@ -533,7 +533,7 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-copper"><strong class="c-copper">Pit Between Eye and Nostril</strong>Copperheads are pit vipers. A small heat-sensing depression sits on each side of the face between the eye and nostril. Look for a small dark recess in that zone.</div>
+    <div class="trait-col a bg-copper"><strong class="c-copper">Pit Between Eye and Nostril</strong>Copperheads are pit vipers. A small heat-sensing depression sits on each side of the face between the eye and nostril.</div>
     <div class="trait-col bg-corn"><strong class="c-corn">No Facial Pit Organ</strong>Corn snakes have no pit organs. The face is smooth between eye and nostril with no depression visible.</div>
   </div>
 </div>
@@ -546,7 +546,7 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-copper"><strong class="c-copper">Usually Vertical Slit</strong>Vertical pupils in good light. Dilation in shade or at night can make them appear rounder. Never rely on pupil shape alone.</div>
+    <div class="trait-col a bg-copper"><strong class="c-copper">Usually Vertical Slit</strong>Vertical pupils in good light. Dilation in shade or at night can make them appear rounder. Never rely on pupils alone.</div>
     <div class="trait-col bg-corn"><strong class="c-corn">Round Pupil</strong>Corn snakes show round pupils. Treat this as secondary confirmation, not the deciding trait.</div>
   </div>
 </div>
@@ -593,11 +593,9 @@ flex-wrap:wrap;
 <div class="sec-label">Range Notes</div>
 <div class="range-notes">
   <p>Copperheads occur broadly across the central and eastern U.S. and extend into northern Mexico. Corn snakes occur mainly across the southeastern and central U.S., from New Jersey south to the Florida Keys.</p>
-  <p><span class="range-overlap">The overlap zone across the eastern and southeastern U.S. is exactly where misidentification is most common</span> — and where most corn snakes are killed by people who assumed copperhead.</p>
+  <p><span class="range-overlap">The overlap zone across the eastern and southeastern U.S. is exactly where misidentification is most common</span> — and where most corn snakes are killed by people who fear they are venomous.</p>
 </div>
 
-
-    
   </div><!-- /panel 1 -->
 
   <!-- ══════════════════════════════════════════════════════
@@ -606,7 +604,6 @@ flex-wrap:wrap;
 
   <div class="panel" id="panel-coral-milk">
 
-```
 <div class="sec-label">At a Glance</div>
 <div class="snap-grid">
   <div class="snap-card bg-coral">
@@ -617,7 +614,7 @@ flex-wrap:wrap;
   <div class="snap-card bg-milk">
     <div class="snap-dot-row c-milk"><span class="dot" style="background:#c0a080"></span> Non-venomous</div>
     <div class="snap-name c-milk">Milk / Scarlet Snake</div>
-    <p class="snap-text">Similar banding but red touches black, not yellow. Scarlet snakes often have a lighter belly without complete ventral rings. Milk snakes can be highly variable but follow the same red-touches-black rule.</p>
+    <p class="snap-text">Similar banding but red touches black, not yellow. Scarlet snakes often have a lighter belly without complete ventral rings. Milk snakes can be highly variable.</p>
   </div>
 </div>
 
@@ -628,7 +625,7 @@ flex-wrap:wrap;
     <div class="rhyme-pill rhyme-danger">Red touches yellow → kill a fellow</div>
     <div class="rhyme-pill rhyme-safe">Red touches black → friend of Jack</div>
   </div>
-  <p>This color-order rhyme works for U.S. coral snake look-alikes. Check what color is touching the red bands. If yellow (or white) borders the red, treat it as a potential coral snake. If black borders the red, it's almost certainly a mimic species.</p>
+  <p>This color-order rhyme works for U.S. coral snake look-alikes. Check what color is touching the red bands. If yellow (or white) borders the red, treat it as a potential coral snake. If black borders it, it's a mimic.</p>
   <p class="warning">⚠ Outside the U.S., this rhyme becomes unreliable. Do not apply it to Central or South American species.</p>
 </div>
 
@@ -648,8 +645,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-coral"><strong class="c-coral-r">Red Touches Yellow</strong>The red bands are bordered directly by yellow (or white) bands. This is the key diagnostic. Rings encircle the entire body completely.</div>
-    <div class="trait-col bg-milk"><strong class="c-milk">Red Touches Black</strong>The red bands are bordered by black bands. This is the clearest field distinction from coral snakes. Pattern may not encircle the belly fully.</div>
+    <div class="trait-col a bg-coral"><strong class="c-coral-r">Red Touches Yellow</strong>The red bands are bordered directly by yellow (or white) bands. This is the key diagnostic. Rings encircle the entire body.</div>
+    <div class="trait-col bg-milk"><strong class="c-milk">Red Touches Black</strong>The red bands are bordered by black bands. This is the clearest field distinction from coral snakes.</div>
   </div>
 </div>
 
@@ -662,7 +659,7 @@ flex-wrap:wrap;
   <div class="trait-body">
     <div class="trait-spacer"></div>
     <div class="trait-col a bg-coral"><strong class="c-coral-r">Complete Ventral Rings</strong>Color bands encircle the entire body, including the belly. The pattern is consistent all the way around.</div>
-    <div class="trait-col bg-milk"><strong class="c-milk">Often Lighter Belly</strong>Scarlet snakes in particular tend to have a lighter or whitish underside. The dorsal banding may not continue fully onto the ventral surface.</div>
+    <div class="trait-col bg-milk"><strong class="c-milk">Often Lighter Belly</strong>Scarlet snakes in particular tend to have a lighter or whitish underside. The dorsal banding may not continue fully around.</div>
   </div>
 </div>
 
@@ -674,8 +671,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-coral"><strong class="c-coral-r">Blunt, Rounded Head</strong>Unlike pit vipers, coral snakes have small, blunt heads not dramatically wider than the neck. No facial pits. Head is black to behind the eyes.</div>
-    <div class="trait-col bg-milk"><strong class="c-milk">Narrow, Tapered Snout</strong>Milk and scarlet snakes typically have a pointed or tapered snout. Scarlet snakes often have a noticeably pointed red nose.</div>
+    <div class="trait-col a bg-coral"><strong class="c-coral-r">Blunt, Rounded Head</strong>Unlike pit vipers, coral snakes have small, blunt heads not dramatically wider than the neck. No facial pits.</div>
+    <div class="trait-col bg-milk"><strong class="c-milk">Narrow, Tapered Snout</strong>Milk and scarlet snakes typically have a pointed or tapered snout. Scarlet snakes often have a notably pointed face.</div>
   </div>
 </div>
 
@@ -695,10 +692,8 @@ flex-wrap:wrap;
 <div class="sec-label">Range Notes</div>
 <div class="range-notes">
   <p>Eastern coral snakes occur across the southeastern coastal plain from North Carolina to the Florida Keys and west into Texas. Scarlet kingsnakes and scarlet snakes overlap this range extensively.</p>
-  <p><span class="range-overlap">In Texas, the Texas coral snake replaces the eastern species</span> — the band-order rule still applies, but range verification matters when working near the western edge of coral snake territory.</p>
+  <p><span class="range-overlap">In Texas, the Texas coral snake replaces the eastern species</span> — the band-order rule still applies, but range verification matters when working near the western edge.</p>
 </div>
-
-
 
   </div><!-- /panel 2 -->
 
@@ -713,7 +708,7 @@ flex-wrap:wrap;
   <div class="snap-card bg-cotton">
     <div class="snap-dot-row c-cotton"><span class="dot" style="background:var(--cotton)"></span> Venomous</div>
     <div class="snap-name c-cotton">Cottonmouth</div>
-    <p class="snap-text">Heavy, blocky body. Triangular head dramatically wider than the neck. Heat pits present. When threatened, may gape to display the white interior. Banding often faded or obscure in adults.</p>
+    <p class="snap-text">Heavy, blocky body. Triangular head dramatically wider than the neck. Heat pits present. When threatened, may gape to display the white interior. Banding often faded or obscured in adults.</p>
   </div>
   <div class="snap-card bg-water">
     <div class="snap-dot-row c-water"><span class="dot" style="background:#60a8c8"></span> Non-venomous</div>
@@ -739,8 +734,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-cotton"><strong class="c-cotton">Faded or Obscure in Adults</strong>Young cottonmouths are strongly banded with reddish-brown on tan. Adults often lose contrast; pattern becomes murky, dark, or nearly uniform olive to black.</div>
-    <div class="trait-col bg-water"><strong class="c-water">Banded or Blotched, Often Contrasty</strong>Banded water snakes (like the banded water snake) maintain clearer crossband contrast. Pattern tends to stay more visible through adulthood.</div>
+    <div class="trait-col a bg-cotton"><strong class="c-cotton">Faded or Obscure in Adults</strong>Young cottonmouths are strongly banded with reddish-brown on tan. Adults often lose contrast; pattern becomes cryptic.</div>
+    <div class="trait-col bg-water"><strong class="c-water">Banded or Blotched, Often Contrasty</strong>Banded water snakes maintain clearer crossband contrast. Pattern tends to remain visible.</div>
   </div>
 </div>
 
@@ -752,8 +747,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-cotton"><strong class="c-cotton">Dramatically Triangular</strong>Heavy, broad head clearly wider than the neck. Obvious jowl mass from venom glands. Snout appears blocky from the front.</div>
-    <div class="trait-col bg-water"><strong class="c-water">Narrower, Less Distinct</strong>Head is wider than the neck but the contrast is less dramatic. More tapered toward the snout. Less jowl mass visible.</div>
+    <div class="trait-col a bg-cotton"><strong class="c-cotton">Dramatically Triangular</strong>Heavy, broad head clearly wider than the neck. Obvious jowl mass from venom glands. Snout appears blocky.</div>
+    <div class="trait-col bg-water"><strong class="c-water">Narrower, Less Distinct</strong>Head is wider than the neck but the contrast is less dramatic. More tapered toward the snout. Less jowl mass.</div>
   </div>
 </div>
 
@@ -778,7 +773,7 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-cotton"><strong class="c-cotton">Body High, Floats with Buoyancy</strong>Cottonmouths tend to swim with much of the body visible above the water surface, appearing high and buoyant.</div>
+    <div class="trait-col a bg-cotton"><strong class="c-cotton">Body High, Floats with Buoyancy</strong>Cottonmouths tend to swim with much of the body visible above the water surface, appearing high and dry.</div>
     <div class="trait-col bg-water"><strong class="c-water">Body Low, Swims Through Water</strong>Water snakes tend to swim with the body more submerged, with mainly the head visible above the surface.</div>
   </div>
 </div>
@@ -798,11 +793,9 @@ flex-wrap:wrap;
 
 <div class="sec-label">Range Notes</div>
 <div class="range-notes">
-  <p>Cottonmouths occur across the southeastern U.S., from Virginia south through Florida and west into Texas and Oklahoma, primarily in wetland and aquatic habitats. Multiple water snake species overlap this range nearly completely.</p>
-  <p><span class="range-overlap">Water snakes are among the most frequently misidentified snakes in the south</span> — and among the most frequently killed because of it. Both species often share the same ponds, streams, and bayous.</p>
+  <p>Cottonmouths occur across the southeastern U.S., from Virginia south through Florida and west into Texas and Oklahoma, primarily in wetland and aquatic habitats. Multiple water snake species overlap this range.</p>
+  <p><span class="range-overlap">Water snakes are among the most frequently misidentified snakes in the south</span> — and among the most frequently killed because of it. Both species often share the same waterways.</p>
 </div>
-
-
 
   </div><!-- /panel 3 -->
 
@@ -817,12 +810,12 @@ flex-wrap:wrap;
   <div class="snap-card bg-rat">
     <div class="snap-dot-row c-rat"><span class="dot" style="background:#909090"></span> Non-venomous</div>
     <div class="snap-name c-rat">Rat Snake</div>
-    <p class="snap-text">Large, slender constrictor. Adults are often dark or blotched. Juveniles are strongly blotched gray-on-gray with a pattern that can superficially resemble a young copperhead. Key: no yellow tail tip, no heat pits.</p>
+    <p class="snap-text">Large, slender constrictor. Adults are often dark or blotched. Juveniles are strongly blotched gray-on-gray with a pattern that can superficially resemble a young copperhead.</p>
   </div>
   <div class="snap-card bg-juv">
     <div class="snap-dot-row c-juv"><span class="dot" style="background:var(--juv)"></span> Venomous</div>
     <div class="snap-name c-juv">Juvenile Copperhead</div>
-    <p class="snap-text">Born live, fully venomous from birth. Juveniles have bright sulfur-yellow tail tips used for caudal luring. Pattern is already the classic copperhead hourglass on a grayish-tan background.</p>
+    <p class="snap-text">Born live, fully venomous from birth. Juveniles have bright sulfur-yellow tail tips used for caudal luring. Pattern is already the classic copperhead hourglass on a grayish-tan base.</p>
   </div>
 </div>
 
@@ -844,7 +837,7 @@ flex-wrap:wrap;
   <div class="trait-body">
     <div class="trait-spacer"></div>
     <div class="trait-col a bg-rat"><strong class="c-rat">No Yellow Tail Tip</strong>Juvenile rat snakes do not have the bright sulfur-yellow tail tip. Tail color matches or fades from the body pattern.</div>
-    <div class="trait-col bg-juv"><strong class="c-juv">Bright Sulfur-Yellow Tail</strong>Juvenile copperheads have a vivid yellow tail tip used to lure small prey. This is the single most reliable quick distinction. If you see a yellow tail on a small blotched snake, treat it as a copperhead.</div>
+    <div class="trait-col bg-juv"><strong class="c-juv">Bright Sulfur-Yellow Tail</strong>Juvenile copperheads have a vivid yellow tail tip used to lure small prey. This is the single most reliable quick check.</div>
   </div>
 </div>
 
@@ -856,8 +849,8 @@ flex-wrap:wrap;
   </div>
   <div class="trait-body">
     <div class="trait-spacer"></div>
-    <div class="trait-col a bg-rat"><strong class="c-rat">Squarish Blotches</strong>Juvenile rat snakes have squarish, more irregular blotches on a gray background. Blotches don't have the consistent hourglass shape. Pattern is often less defined and more mottled.</div>
-    <div class="trait-col bg-juv"><strong class="c-juv">Hourglass Pattern Already Present</strong>Even very young copperheads already show the characteristic crossband hourglass shape. The pattern is already working like a miniature adult copperhead pattern.</div>
+    <div class="trait-col a bg-rat"><strong class="c-rat">Squarish Blotches</strong>Juvenile rat snakes have squarish, more irregular blotches on a gray background. Blotches don't have the consistent hourglass pinch.</div>
+    <div class="trait-col bg-juv"><strong class="c-juv">Hourglass Pattern Already Present</strong>Even very young copperheads already show the characteristic crossband hourglass shape. The pattern is recognizable from birth.</div>
   </div>
 </div>
 
@@ -903,11 +896,8 @@ flex-wrap:wrap;
 <div class="sec-label">Range Notes</div>
 <div class="range-notes">
   <p>Eastern rat snakes occur across a broad swath of the eastern U.S., overlapping substantially with copperhead range. Both species favor forest edges, rocky outcrops, and structures near woodland.</p>
-  <p><span class="range-overlap">Late summer through fall is when juvenile copperheads are most commonly encountered</span> — and most commonly confused with young rat snakes. Yellow tail tip is your fastest field check in this season.</p>
+  <p><span class="range-overlap">Late summer through fall is when juvenile copperheads are most commonly encountered</span> — and most commonly confused with young rat snakes. Yellow tail tip is your quickest field check.</p>
 </div>
-
-
-
 
   </div><!-- /panel 4 -->
 
@@ -915,7 +905,7 @@ flex-wrap:wrap;
 
 <footer>
   <div class="footer-logo">Wild<span>Tomorrow</span></div>
-  <div class="footer-txt">Educational field guide. Not a substitute for professional wildlife identification or medical advice. Regional map and visual heuristics are simplified for educational use. If bitten by any snake, seek emergency medical care immediately regardless of perceived identification.</div>
+  <div class="footer-txt">Educational field guide. Not a substitute for professional wildlife identification or medical advice. Regional map and visual heuristics are simplified for educational use.</div>
 </footer>
 
 <script>
@@ -934,9 +924,7 @@ function toggle(btn, panelId) {
   const card = document.querySelector(`#panel-${panelId} .trait-card[data-card="${trait}"]`);
   if (card) card.classList.toggle('hidden', !btn.classList.contains('on'));
 }
-
-// ─
-
+</script>
 
 </body>
 </html>
